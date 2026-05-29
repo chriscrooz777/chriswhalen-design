@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  /* Ink */
+  --ink: #1a1a1a;
+  --ink-2: #4a4a4a;
+  --ink-3: #767676;
+
+  /* Paper */
+  --paper: #fafaf7;
+  --paper-2: #f3f2ed;
+
+  /* Rules */
+  --rule: #e6e4dd;
+  --rule-2: rgba(26, 26, 26, 0.08);
+
+  /* Accents */
+  --accent: #b8472a;
+  --accent-2: #1d3a8a;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --space-11: 192px;
+}
+
+@theme inline {
+  /* Colors */
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-rule: var(--rule);
+  --color-rule-2: var(--rule-2);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+
+  /* Fonts */
+  --font-display: var(--font-instrument-sans);
+  --font-body: var(--font-inter);
+
+  /* Spacing tokens */
+  --spacing-sp-1: var(--space-1);
+  --spacing-sp-2: var(--space-2);
+  --spacing-sp-3: var(--space-3);
+  --spacing-sp-4: var(--space-4);
+  --spacing-sp-5: var(--space-5);
+  --spacing-sp-6: var(--space-6);
+  --spacing-sp-7: var(--space-7);
+  --spacing-sp-8: var(--space-8);
+  --spacing-sp-9: var(--space-9);
+  --spacing-sp-10: var(--space-10);
+  --spacing-sp-11: var(--space-11);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Page load fade */
+@keyframes page-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+main {
+  animation: page-fade 200ms ease both;
+}
