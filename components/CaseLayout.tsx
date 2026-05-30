@@ -50,7 +50,9 @@ export function CaseLayout({
         </div>
 
         <div className="mx-auto max-w-[1200px] px-sp-5 md:px-sp-7">
-          <NextStep label={nextStepLabel} href={nextStepHref} />
+          <div className="mx-auto max-w-[680px]">
+            <NextStep label={nextStepLabel} href={nextStepHref} />
+          </div>
         </div>
       </article>
     </CaseProvider>

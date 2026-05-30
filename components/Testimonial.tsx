@@ -18,7 +18,7 @@ export function Testimonial({
   const attribution = company ? `${name}, ${role}, ${company}` : `${name}, ${role}`;
 
   return (
-    <div className="mx-auto max-w-[880px] py-sp-9 md:py-sp-9">
+    <div className="mx-auto max-w-[880px] py-sp-10 md:py-sp-11">
       <p className="font-display text-[28px] font-normal leading-[1.3] tracking-[-0.01em] text-ink">
         {quote}
       </p>

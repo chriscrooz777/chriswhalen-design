@@ -7,7 +7,7 @@ interface NextStepProps {
 
 export function NextStep({ label, href }: NextStepProps) {
   return (
-    <div className="mx-auto max-w-[680px] pt-sp-7 pb-sp-9">
+    <div className="mx-auto max-w-[880px] pt-sp-7 pb-sp-9">
       <div className="border-t border-rule pt-sp-6">
         <Link
           href={href}

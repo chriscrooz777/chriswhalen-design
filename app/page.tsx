@@ -1,20 +1,92 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { Testimonial } from "@/components/Testimonial";
+
+export const metadata: Metadata = {
+  title: "Chris Whalen — Design Leader",
+  description:
+    "Leading product design across web, TV, mobile, and theatrical at Angel.",
+};
+
+const signalBeats = [
+  {
+    label: "Head-of-Design scope.",
+    body: "Six senior designers. Web, TV, mobile, theatrical. Peer to the Head of Product. Reports to the CXO.",
+  },
+  {
+    label: "AI-native practice.",
+    body: "Two years of building, shipping, and writing publicly about AI in production design work.",
+  },
+  {
+    label: "Multiplier by practice.",
+    body: "Hire well, get out of the way, let the best idea win.",
+  },
+  {
+    label: "Founder depth.",
+    body: "Raised, built, shipped, and wound down a venture-backed startup. Concurrent with Angel.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="mx-auto max-w-[1200px] px-sp-5 md:px-sp-7 pt-sp-8">
-      <p className="font-body text-[15px] text-ink-3">Home page — coming in a later session.</p>
-      <p className="mt-sp-4">
-        <Link
-          href="/work/communication-is-king"
-          className="text-[16px] font-body text-ink no-underline inline-flex items-baseline gap-sp-2 group"
-        >
-          <span className="text-accent">&rarr;</span>
-          <span className="group-hover:underline group-hover:decoration-accent group-hover:underline-offset-4 group-hover:decoration-1">
-            Communication is King (Case #1)
-          </span>
-        </Link>
-      </p>
-    </div>
+    <article>
+      <section className="px-sp-5 md:px-sp-7 pt-sp-10 md:pt-sp-11 pb-sp-10 md:pb-sp-11">
+        <div className="mx-auto max-w-[880px]">
+          {/* Top line */}
+          <p className="text-[15px] font-medium tracking-[0.06em] uppercase text-ink-3 mb-sp-6">
+            Chris Whalen &mdash; Design leader. Coeur d&rsquo;Alene, Idaho.
+          </p>
+
+          {/* Headline */}
+          <h1 className="font-display text-[34px] md:text-[56px] font-medium leading-[1.1] md:leading-[1.05] tracking-[-0.02em] md:tracking-[-0.025em] text-ink mb-sp-5">
+            Leading product design across web, TV, mobile, and theatrical at Angel.
+          </h1>
+
+          {/* Sub-headline */}
+          <p className="text-[17px] md:text-[20px] leading-[1.5] md:leading-[1.45] text-ink-2 mb-sp-9 max-w-[720px]">
+            Six senior designers across web, TV, mobile, and theatrical. Two
+            years building, shipping, and writing publicly about AI as a serious
+            design collaborator.
+          </p>
+
+          {/* Signal beats */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-sp-6 md:gap-sp-7 mb-sp-9">
+            {signalBeats.map((beat, i) => (
+              <p key={i} className="text-[15px] leading-[1.6] text-ink-2">
+                <span className="font-medium text-ink">{beat.label}</span>{" "}
+                {beat.body}
+              </p>
+            ))}
+          </div>
+
+          {/* Primary path forward */}
+          <Link
+            href="/work"
+            className="inline-flex items-baseline gap-sp-2 text-[16px] font-body text-ink no-underline group"
+          >
+            <span className="text-accent transition-transform duration-200 ease-[cubic-bezier(0.2,0,0,1)] group-hover:translate-x-1">
+              &rarr;
+            </span>
+            <span className="group-hover:underline group-hover:decoration-accent group-hover:underline-offset-4 group-hover:decoration-1">
+              See the work
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      {/* Seth Taylor testimonial — iron-blue accent */}
+      <div className="bg-paper-2">
+        <div className="px-sp-5 md:px-sp-7">
+          <Testimonial
+            quote="Chris is one of the most capable design leaders I've worked with. He builds teams that ship with clarity and taste, and he does it without ego."
+            name="Seth Taylor"
+            role="CXO"
+            company="Angel"
+            accentAttribution
+          />
+        </div>
+      </div>
+
+    </article>
   );
 }
