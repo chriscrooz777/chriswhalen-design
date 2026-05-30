@@ -12,8 +12,8 @@ export default function WorkIndexPage() {
 
   return (
     <article>
-      <div className="mx-auto max-w-[1200px] px-sp-5 md:px-sp-7 pt-sp-8 md:pt-[80px] mb-sp-9 md:mb-sp-10">
-        <h1 className="font-display text-[36px] md:text-[52px] font-medium leading-[1.1] md:leading-[1.06] tracking-[-0.025em] text-ink">
+      <div className="mx-auto max-w-[1200px] px-sp-5 md:px-sp-7 pt-sp-8 md:pt-sp-8 mb-sp-7">
+        <h1 className="font-display text-[34px] md:text-[44px] font-medium leading-[1.15] md:leading-[1.1] tracking-[-0.02em] text-ink">
           Selected Work
         </h1>
       </div>

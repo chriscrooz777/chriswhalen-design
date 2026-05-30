@@ -20,7 +20,7 @@ export function CaseHero({
   return (
     <div className="mx-auto max-w-[880px] pt-8 md:pt-[80px] pb-2 md:pb-[56px]">
       {eyebrow ? (
-        <p className="font-body text-[13px] font-medium uppercase tracking-[0.06em] text-ink-3 mb-5">
+        <p className="font-body text-[13px] font-medium uppercase tracking-[0.06em] text-accent mb-5">
           {eyebrow}
         </p>
       ) : null}

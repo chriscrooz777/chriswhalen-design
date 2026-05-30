@@ -136,7 +136,7 @@ export default function LeadershipPage() {
       {/* Operating Principles — two-column on desktop */}
       <section className="px-sp-5 md:px-sp-7">
         <div className="mx-auto max-w-[880px]">
-          <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-ink-3 mb-sp-7">
+          <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-accent mb-sp-7">
             What I Believe
           </p>
 
@@ -164,7 +164,7 @@ export default function LeadershipPage() {
       <section className="mt-sp-10 bg-paper-2">
         <div className="px-sp-5 md:px-sp-7 py-sp-9 md:py-sp-10">
           <div className="mx-auto max-w-[880px]">
-            <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-ink-3 mb-sp-5">
+            <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-accent mb-sp-5">
               AI &amp; Design
             </p>
             <h2 className="font-display text-[24px] md:text-[32px] font-normal leading-[1.25] tracking-[-0.015em] text-ink mb-sp-6">
@@ -187,14 +187,14 @@ export default function LeadershipPage() {
       {/* Named Practices — 2-column grid on desktop */}
       <section className="px-sp-5 md:px-sp-7 mt-sp-10">
         <div className="mx-auto max-w-[880px]">
-          <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-ink-3 mb-sp-7">
+          <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-accent mb-sp-7">
             What I Do
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-sp-7 md:gap-x-sp-8 md:gap-y-sp-9">
             {practices.map((practice, i) => (
               <div key={i}>
-                <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-ink-3 mb-sp-2">
+                <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-accent mb-sp-2">
                   Practice {String(i + 1).padStart(2, "0")}
                 </p>
                 <h3 className="font-display text-[20px] md:text-[22px] font-medium text-ink mb-sp-3">

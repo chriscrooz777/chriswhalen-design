@@ -64,7 +64,7 @@ export default function WritingPage() {
         <div className="space-y-sp-10 md:space-y-sp-11">
           {groups.map((group) => (
             <section key={group.label}>
-              <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-ink-3 mb-sp-6">
+              <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-accent mb-sp-6">
                 {group.label}
               </p>
 

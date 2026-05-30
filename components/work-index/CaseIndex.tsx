@@ -40,7 +40,7 @@ export function CaseIndex({ cases }: CaseIndexProps) {
         </div>
         <div className="max-w-[880px]">
           {featured.eyebrow ? (
-            <p className="font-body text-[13px] font-medium uppercase tracking-[0.06em] text-ink-3 mb-sp-3">
+            <p className="font-body text-[13px] font-medium uppercase tracking-[0.06em] text-accent mb-sp-3">
               {featured.eyebrow}
             </p>
           ) : null}
@@ -88,7 +88,7 @@ export function CaseIndex({ cases }: CaseIndexProps) {
                   </div>
                   <div>
                     {c.eyebrow ? (
-                      <p className="font-body text-[13px] font-medium uppercase tracking-[0.06em] text-ink-3 mb-sp-3">
+                      <p className="font-body text-[13px] font-medium uppercase tracking-[0.06em] text-accent mb-sp-3">
                         {c.eyebrow}
                       </p>
                     ) : null}

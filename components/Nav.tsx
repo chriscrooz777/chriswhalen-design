@@ -63,7 +63,7 @@ export function Nav() {
                 href={link.href}
                 className={`text-[15px] no-underline transition-colors duration-[120ms] ${
                   isActive(link.href)
-                    ? "font-medium text-ink"
+                    ? "font-medium text-ink underline decoration-accent decoration-2 underline-offset-[6px]"
                     : "font-normal text-ink-2 hover:text-ink"
                 }`}
               >

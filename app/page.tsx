@@ -33,7 +33,7 @@ export default function Home() {
       <section className="px-sp-5 md:px-sp-7 pt-sp-10 md:pt-sp-11 pb-sp-10 md:pb-sp-11">
         <div className="mx-auto max-w-[880px]">
           {/* Top line */}
-          <p className="text-[15px] font-medium tracking-[0.06em] uppercase text-ink-3 mb-sp-6">
+          <p className="text-[15px] font-medium tracking-[0.06em] uppercase text-accent mb-sp-6">
             Chris Whalen &mdash; Design leader. Coeur d&rsquo;Alene, Idaho.
           </p>
 
@@ -74,7 +74,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Seth Taylor testimonial — iron-blue accent */}
+      {/* Seth Taylor testimonial */}
       <div className="bg-paper-2">
         <div className="px-sp-5 md:px-sp-7">
           <Testimonial
@@ -82,7 +82,6 @@ export default function Home() {
             name="Seth Taylor"
             role="CXO"
             company="Angel"
-            accentAttribution
           />
         </div>
       </div>

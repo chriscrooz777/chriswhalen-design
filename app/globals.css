@@ -14,9 +14,8 @@
   --rule: #e6e4dd;
   --rule-2: rgba(26, 26, 26, 0.08);
 
-  /* Accents */
+  /* Accent */
   --accent: #b8472a;
-  --accent-2: #1d3a8a;
 
   /* Spacing */
   --space-1: 4px;
@@ -42,7 +41,6 @@
   --color-rule: var(--rule);
   --color-rule-2: var(--rule-2);
   --color-accent: var(--accent);
-  --color-accent-2: var(--accent-2);
 
   /* Fonts */
   --font-display: var(--font-instrument-sans);

@@ -3,7 +3,6 @@ interface TestimonialProps {
   name: string;
   role: string;
   company?: string | null;
-  accentAttribution?: boolean;
 }
 
 export function Testimonial({
@@ -11,7 +10,6 @@ export function Testimonial({
   name,
   role,
   company,
-  accentAttribution = false,
 }: TestimonialProps) {
   if (!quote) return null;
 
@@ -22,11 +20,7 @@ export function Testimonial({
       <p className="font-display text-[28px] font-normal leading-[1.3] tracking-[-0.01em] text-ink">
         {quote}
       </p>
-      <p
-        className={`mt-sp-4 text-[15px] font-body font-normal ${
-          accentAttribution ? "text-accent-2" : "text-ink-3"
-        }`}
-      >
+      <p className="mt-sp-4 text-[15px] font-body font-normal text-accent">
         &mdash; {attribution}
       </p>
     </div>
