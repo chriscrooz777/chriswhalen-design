@@ -120,7 +120,24 @@ Decisions made during the session that built `/`, `/leadership`, `/writing`, `/c
 - **Testimonial padding is generous.** `py-sp-10` (128px) mobile, `py-sp-11` (192px) desktop. Chris requested "way more" padding.
 - **NextStep defaults to 880px** via the component. CaseLayout wraps it in a 680px constraint to match prose. This keeps the component flexible without per-page props.
 
-### 3k. Angel Design Assistant SessionStart hook removed
+### 3k. Consistency audit — top padding and H1 (TODO, not yet applied)
+
+Audit found three different top paddings and three different H1 sizes across pages:
+
+| Page | Top padding (desktop) | H1 size (desktop) |
+|---|---|---|
+| `/` (home) | `sp-11` = 192px | 56px, tracking -0.025em |
+| `/work` | `sp-8` / `80px` = 80px | 52px, tracking -0.025em |
+| `/leadership` | `sp-8` = 64px | 44px, tracking -0.02em |
+| `/writing` | `sp-8` = 64px | 44px, tracking -0.02em |
+| `/contact` | `sp-11` = 192px | 44px, tracking -0.02em |
+
+**Decision (agreed, not yet implemented):**
+- Interior pages (`/work`, `/leadership`, `/writing`, `/contact`): standardize to `pt-sp-8` (64px desktop) and H1 at 44px/34px mobile (`text-[34px] md:text-[44px]`, tracking -0.02em)
+- Home keeps `pt-sp-11` (192px) and 56px H1 — it's a hero headline, not a page title
+- Files to fix: `app/work/page.tsx` (padding 80px→64px, H1 52px→44px), `app/contact/page.tsx` (padding 192px→64px)
+
+### 3l. Angel Design Assistant SessionStart hook removed
 
 `~/.claude/settings.json` was cleared to `{}` to remove the user-level Angel Design Assistant hook that was firing on every session. Backup at `~/.claude/settings.json.angel-backup-20260529`. The `~/.claude/angel-design-intelligence/` folder is still on disk — untouched in case Chris uses it for real Angel projects later.
 
