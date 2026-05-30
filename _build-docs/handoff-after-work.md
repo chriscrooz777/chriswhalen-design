@@ -1,4 +1,4 @@
-# Handoff — after `/work` is built
+# Handoff — after all pages built
 
 > **For the next Claude Code session.** Read this AFTER `00-START-HERE.md` and the original build docs. This doc captures the state of the repo and the decisions made in conversation that don't yet live in the original build docs. If anything here conflicts with an earlier doc, **this doc wins** (it's the most recent).
 
@@ -6,19 +6,21 @@
 
 ## 1. What's built and shipped
 
-The `/work` case study system is complete and pushed to GitHub.
+All five pages are built and pushed to GitHub.
 
 | Page | Status |
 |---|---|
+| `/` (home) | ✅ Live. Single-screen hero, 2x2 signal beats, Seth Taylor testimonial (placeholder quote) in paper-2 band with iron-blue accent. No next-step footer — testimonial is the ending. |
 | `/work` (index) | ✅ Live. Layout A (Featured + Alternating Stack). |
 | `/work/communication-is-king` (Case #1) | ✅ Live. Verbatim case prose, no testimonial, hero placeholder. |
 | `/work/the-perfect-storm` (Case #3) | ✅ Live. Hero image wired. Testimonial slot wired (Brett Crockett, quote: null). |
 | `/work/pay-it-forward` (Case #2) | ✅ Live. Hero image wired. Testimonial slot wired (David Crapo, quote: null). |
 | `/work/the-discipline-of-calling-it` (Case #4) | ✅ Live. Hero image wired. Testimonial slot wired (Jake Jones, quote: null). |
+| `/leadership` | ✅ Live. Executive narrative with lead paragraph at 880px, two-column principles, paper-2 AI section, 2x2 practices grid, Austin Page testimonial (quote: null). |
+| `/writing` | ✅ Live. Index only — two topic groups, five pieces with descriptions. Individual `/writing/[slug]` routes not yet built (need essay content). |
+| `/contact` | ✅ Live. Email, résumé PDF link, LinkedIn. Terminal page, no next-step footer. |
 
 Repo: [github.com/chriscrooz777/chriswhalen-design](https://github.com/chriscrooz777/chriswhalen-design). Local `main` tracks `origin/main`.
-
-Other pages (`/`, `/leadership`, `/writing`, `/contact`) are **not built yet**. The Phase 4 spec describes them; nothing has been implemented.
 
 ---
 
@@ -106,7 +108,19 @@ Inspired by Stripe's blog asymmetric hierarchy, adapted to the "vertical list" c
 
 Chris rejected multiple proposed intro lines. The page now opens with just `Selected Work` h1 and goes directly into the featured case. No supplementary copy.
 
-### 3j. Angel Design Assistant SessionStart hook removed
+### 3j. Pages session — layout and spacing decisions
+
+Decisions made during the session that built `/`, `/leadership`, `/writing`, `/contact`:
+
+- **880px is the primary content column** for non-case pages. Leadership, writing, home, and contact all use 880px. Case study prose stays at 680px for reading comfort (~65–75 chars/line).
+- **`paper-2` background bands** are used as section separators: on Home (wraps Seth Taylor testimonial) and on Leadership (wraps "Designing with AI in the Room" section). This is a new visual pattern.
+- **Leadership page is not a flat scroll.** It uses width variation (880px lead paragraph → 880px two-column principles → full-bleed paper-2 AI section → 880px 2x2 practices grid), type-scale variation (26px lead → 17px body → 32px pull → 22px names), and one surface-color shift. Chris explicitly requested more personality; the flat 680px single-column version was rejected as "boring and static."
+- **No indented content.** Chris flagged the 880→680px width shift mid-section as "strange indentation." All content within a section flows at the same width. Don't narrow body prose below a wider heading within the same section.
+- **Home page has no next-step footer.** The "See the work →" inline link and nav handle navigation. The Seth Taylor testimonial paper-2 band is the terminal element.
+- **Testimonial padding is generous.** `py-sp-10` (128px) mobile, `py-sp-11` (192px) desktop. Chris requested "way more" padding.
+- **NextStep defaults to 880px** via the component. CaseLayout wraps it in a 680px constraint to match prose. This keeps the component flexible without per-page props.
+
+### 3k. Angel Design Assistant SessionStart hook removed
 
 `~/.claude/settings.json` was cleared to `{}` to remove the user-level Angel Design Assistant hook that was firing on every session. Backup at `~/.claude/settings.json.angel-backup-20260529`. The `~/.claude/angel-design-intelligence/` folder is still on disk — untouched in case Chris uses it for real Angel projects later.
 
@@ -195,36 +209,32 @@ CSS custom properties live in `app/globals.css`. Tailwind v4 utilities reference
 
 ### High priority
 
-1. **Case #1 hero image.** Still a placeholder gradient. Use Midjourney v6 (`--ar 16:9 --style raw`) with atmospheric/quiet-competence direction. Suggested prompts captured in conversation — fall back to "empty modern conference room" or "two leather chairs in sunlit office" if none of the others land. After generation, apply the grade treatment per visual register §Imagery (5% burnt-sienna in shadows, 5% cyan in highlights, 15–20% desaturation, 2–3% grain, 8–12% soft vignette).
+1. **Individual `/writing/[slug]` pages.** The writing index links to five slugs that don't have pages yet. Need essay content before these can be built. Three are ports from LinkedIn, two are new for launch.
 
-2. **`/leadership` page** — densest page on the site per Phase 4 spec. Read Phase 4 spec §"Page 3: Leadership" for the locked structure (executive narrative → philosophy → 4 principles → AI section → 4 named practices → testimonial slot → next-step).
+2. **Case #1 hero image.** Still a placeholder gradient. Use Midjourney v6 (`--ar 16:9 --style raw`) with atmospheric/quiet-competence direction. Suggested prompts captured in prior conversation — fall back to "empty modern conference room" or "two leather chairs in sunlit office" if none of the others land. After generation, apply the grade treatment per visual register §Imagery.
 
-3. **Home page (`/`)** — single-screen Stripe/Linear register per Phase 4 spec §"Page 1: Home". This is the home for the iron-blue accent moment on Seth Taylor's testimonial.
+3. **Testimonial quotes.** Site is now ~80% built — time to collect. When quotes arrive:
+   - Seth Taylor (Home): replace placeholder quote in `app/page.tsx`
+   - Austin Page (Leadership): set quote in `app/leadership/page.tsx` Testimonial component
+   - Case testimonials: drop into case frontmatter `testimonial.quote` field — slots render automatically
 
 ### Medium priority
 
-4. **`/contact` page** — simplest page. Email, résumé PDF placeholder, LinkedIn link. Per Phase 4 spec §"Page 5: Contact".
+4. **Vercel deployment** — not yet configured.
 
-5. **`/writing` page** — last per Phase 4 build order. Grouped by topic. Five launch pieces. May warrant its own scoped session per the Phase 5 handoff notes.
+5. **Real CaseHero image grading.** Right now images render at full saturation. The visual register specifies a unified grade treatment across all photographic assets. Apply this in post (manual grade per image, save into `/public/images/`) rather than trying to fake it in CSS.
 
-### Lower priority / housekeeping
+6. **Case #2 alternate images.** Two `-b` files exist in `/public/images/` (`case-img-giveaway-b.jpg`, `case-img-historik-b.jpg`) as alternates. Currently unused. Confirm with Chris which version is final before final launch.
 
-6. **Update `01-visual-register.md`** to reflect the decisions made in this session (eyebrow simplification, Title Case rule, mobile spacing, allowed Layout A hover motion). Don't keep the register out of sync with reality.
-
-7. **Testimonial quotes** — collected after the site is ~80% built per Phase 4 plan. When quotes arrive, drop them into the case frontmatter `testimonial.quote` field — the slot renders automatically.
-
-8. **Vercel deployment** — not yet configured.
-
-9. **Real CaseHero image grading.** Right now images render at full saturation. The visual register specifies a unified grade treatment across all photographic assets. Apply this in post (manual grade per image, save into `/public/images/`) rather than trying to fake it in CSS.
-
-10. **Case #2 alternate images.** Two `-b` files exist in `/public/images/` (`case-img-giveaway-b.jpg`, `case-img-historik-b.jpg`) as alternates. Currently unused. Confirm with Chris which version is final before final launch.
+7. **Résumé PDF.** `/contact` links to `/chris-whalen-resume.pdf` — file doesn't exist yet in `/public/`.
 
 ---
 
 ## 8. Visual register changes that need to make it back into the register doc
 
-The register doc (`_build-docs/01-visual-register.md`) hasn't been updated to reflect this session's decisions. When you have time, sync these in:
+The register doc (`_build-docs/01-visual-register.md`) hasn't been updated to reflect decisions from the `/work` and pages sessions. When you have time, sync these in:
 
+**From `/work` session:**
 - Eyebrow format: drop "CASE 0X" prefix; use `Company · Date Range`
 - Title Case rule applies to titles and subtitles site-wide
 - Mobile spacing: 32px hero top padding, 40px h2 top margin, 8px hero bottom padding
@@ -232,6 +242,16 @@ The register doc (`_build-docs/01-visual-register.md`) hasn't been updated to re
 - `roleSecondary` field on CaseHero
 - Layout A hover motion (image scale 1.015 over 300ms with spring easing) is allowed — fourth motion pattern beyond the original three
 - The register is **advisory**, not locked
+
+**From pages session (this session):**
+- `paper-2` background bands used as section separators on Home (testimonial) and Leadership (AI section). This is a new visual pattern not in the original register.
+- Content column widths: pages use 880px as the primary column (not 680px). 680px is reserved for case study prose only. NextStep component defaults to 880px; CaseLayout constrains it to 680px.
+- Testimonial vertical padding increased to sp-10 (128px) mobile / sp-11 (192px) desktop — much more generous than the original sp-9 (96px).
+- Leadership page uses two-column layout for operating principles (name left 280px, body right) at 880px — not stacked paragraphs at 680px.
+- Named practices render in a 2x2 grid on desktop instead of a stacked list.
+- "WHAT I BELIEVE" and "WHAT I DO" eyebrows frame principles and practices as different categories.
+- Home page has no next-step footer — the Seth Taylor testimonial band is the terminal element.
+- Home page top line is uppercase eyebrow: "CHRIS WHALEN — DESIGN LEADER. COEUR D'ALENE, IDAHO."
 
 ---
 
@@ -246,10 +266,10 @@ Read these in order:
 3. _build-docs/chris-whalen-phase-4-final-specaz.md  (Phase 4 architecture)
 4. _build-docs/01-visual-register.md  (visual register — note §8 deviations from handoff doc)
 
-Then build [next page]. Don't re-derive decisions captured in the handoff doc.
+Then [task]. Don't re-derive decisions captured in the handoff doc.
 ```
 
-Recommended next build target: **`/leadership`**. It's the next page in the Phase 4 build order, and it sets the typographic and hierarchical patterns for the rest of the site.
+All pages are built. Recommended next targets: **writing essay content** (individual `/writing/[slug]` pages), **testimonial collection**, or **Vercel deployment**.
 
 ---
 
@@ -263,4 +283,8 @@ These were raised, not resolved. Surface them when relevant:
 
 - **AI image tool consensus.** Chris asked about tools for the Case #1 hero. Midjourney v6 was recommended. He hasn't confirmed which tool he's actually using.
 
-- **The home page won't have an `About` link.** Per Phase 4 spec, the executive narrative opens `/leadership`. Mentioned here because Claude may default to expecting an `/about` route.
+- **Leadership page content.** Chris said "I'll make content changes later" — the leadership page structure is approved but the content may be refined. Don't treat the prose as finalized the way case study prose is.
+
+- **Seth Taylor testimonial is placeholder.** The current quote on Home ("Chris is one of the most capable design leaders I've worked with...") is fabricated placeholder text. Must be replaced with the real quote when collected.
+
+- **Writing piece titles/descriptions are draft.** The titles and descriptions on `/writing` were derived from the Phase 4 spec, not authored by Chris. He may want to revise.

@@ -1,8 +1,8 @@
-# chriswhalen.design — Visual Register v1.1
+# chriswhalen.design — Visual Register v1.2
 
-> **Status:** Locked. This document is the source of truth for type, color, spacing, motion, imagery, and component-level visual decisions across chriswhalen.design.
+> **Status:** Advisory, not locked. This document is the starting point for type, color, spacing, motion, imagery, and component-level visual decisions across chriswhalen.design. When a rule fights Chris's brand, break it and surface the tradeoff. See `handoff-after-work.md` §3 for session-specific overrides.
 >
-> **How to use this file:** Paste this into a Cursor / Claude Code conversation alongside the Phase 4 spec and any case context files. Implementation in Cursor should never re-decide anything in this doc; it should only execute it. If a question comes up that this doc doesn't answer, return to Claude.ai (here) and resolve it in design conversation before coding.
+> **How to use this file:** Read alongside the handoff doc. The handoff doc wins on any conflict — it reflects the most recent decisions.
 
 ---
 
@@ -160,13 +160,15 @@ All centered. The page never sprawls full-width.
 
 ## Motion
 
-**Almost none.** Three motion patterns total. No others may be added without a register decision.
+**Almost none.** Four motion patterns total. No others may be added without a register decision.
 
 1. **Page load:** 200ms opacity fade-in on initial paint. No slides, no curtains, no staggered children. Use `view-transition-name` if Next.js view transitions are enabled; otherwise a single root-level CSS transition.
 
 2. **Link hover:** opacity transition `120ms ease`. Underlines appear instantly on hover (no transition on `text-decoration`).
 
 3. **Next-step footer arrow:** the `→` translates `4px` right on hover, `200ms cubic-bezier(0.2, 0, 0, 1)`.
+
+4. **Case index row hover (Layout A):** hero image `scale(1.015)` over `300ms cubic-bezier(0.16, 1, 0.3, 1)` (spring easing). Title gains underline on hover. Added during `/work` session — Chris approved Layout A with this motion.
 
 **Explicitly forbidden:**
 - Scroll-triggered fade-ins
@@ -297,7 +299,7 @@ These are visual specifications only. Behavior and structure live in the page-sp
 - Stacks on mobile: hero above text, full-width
 - Hero image: 16:9 aspect ratio, max-width 560px on desktop
 - Eyebrow above title: Inter, 13px, weight 500, uppercase, tracking 0.06em, `--ink-3`
-  - Example: `CASE 01 · ANGEL · 2023–PRESENT`
+  - Example: `ANGEL · 2023–PRESENT` (no "CASE 0X" prefix — dropped during `/work` session)
 - Title: Instrument Sans, 32px, weight 500, `--ink`
 - Teaser: Inter, 17px, weight 400, line-height 1.65, `--ink-2`, max 2 lines
 - Spacing between rows: `--space-10` (128px) desktop, `--space-8` (64px) mobile
@@ -325,6 +327,39 @@ A single testimonial, set apart from surrounding prose. Used inside cases (#2, #
 - Color: `--ink` (same as body)
 - Underline: 1px solid `--rule-2`, offset 3px
 - Hover: underline becomes `--ink` (no color shift), 120ms transition on underline color only
+
+---
+
+## Patterns added during build sessions
+
+These were not in the original register but were approved by Chris during implementation.
+
+### Title Case rule (site-wide)
+
+All titles and subtitles use standard Title Case. Articles, conjunctions, short prepositions (a, an, the, of, in, on, at, to, by, for) stay lowercase unless first or last word. Body prose stays sentence case.
+
+### `paper-2` background bands
+
+Full-width `--paper-2` background bands are used to set apart specific content sections. Used on:
+- **Home:** wraps the Seth Taylor testimonial
+- **Leadership:** wraps the "Designing with AI in the Room" section
+
+This is a separation tool — use it for moments where generous vertical space alone isn't enough to signal "different kind of content." Don't overuse; two instances across the entire site is the current ceiling.
+
+### Content column widths (as built)
+
+| Context | Width | Rationale |
+|---|---|---|
+| Case study prose | 680px | Reading comfort (~65–75 chars/line) |
+| All other page content | 880px | Wider column for non-prose content (principles, practices, signal beats, writing index) |
+| Hero images, case index | 1200px (page column) | Full-width within container |
+| Testimonials, pull moments | 880px | Wider than prose to read as set-apart |
+
+**Rule:** all content within a section flows at the same width. Don't narrow body prose below a wider heading within the same section — it reads as accidental indentation.
+
+### Testimonial vertical padding
+
+Testimonials use `sp-10` (128px) mobile / `sp-11` (192px) desktop — more generous than originally specified. The extra space makes them feel like deliberate set-apart moments.
 
 ---
 
