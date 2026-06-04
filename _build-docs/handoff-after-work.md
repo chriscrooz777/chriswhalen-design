@@ -270,7 +270,7 @@ CSS custom properties live in `app/globals.css`. Tailwind v4 utilities reference
 
 ### Medium priority
 
-4. **Vercel deployment** — not yet configured.
+4. ~~**Vercel deployment**~~ — ✅ Done. Deployed to Vercel, custom domain `chriswhalen.design` added (+ `www`), GitHub auto-deploy connected to `main`.
 
 5. **Real CaseHero image grading.** Right now images render at full saturation. The visual register specifies a unified grade treatment across all photographic assets. Apply this in post (manual grade per image, save into `/public/images/`) rather than trying to fake it in CSS.
 

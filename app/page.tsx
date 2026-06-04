@@ -27,7 +27,36 @@ const signalBeats = [
   },
 ];
 
-export default function Home() {
+const isHolding = process.env.HOLDING_PAGE === "true";
+
+function HoldingPage() {
+  return (
+    <article className="px-sp-5 md:px-sp-7 pt-sp-10 md:pt-sp-11">
+      <div className="mx-auto max-w-[880px]">
+        <p className="text-[13px] font-medium tracking-[0.06em] uppercase text-accent mb-sp-6">
+          Chris Whalen &mdash; Design Leader. Coeur d&rsquo;Alene, Idaho.
+        </p>
+
+        <h1 className="font-display text-[34px] md:text-[56px] font-medium leading-[1.1] md:leading-[1.05] tracking-[-0.02em] md:tracking-[-0.025em] text-ink mb-sp-5">
+          Something new is on the way.
+        </h1>
+
+        <p className="text-[17px] md:text-[20px] leading-[1.5] md:leading-[1.45] text-ink-2 max-w-[600px]">
+          This site is being built. In the meantime, the best way to reach me is{" "}
+          <a
+            href="mailto:chris@chriswhalen.design"
+            className="text-ink underline decoration-rule-2 underline-offset-[3px] hover:decoration-ink transition-colors duration-[120ms]"
+          >
+            email
+          </a>
+          .
+        </p>
+      </div>
+    </article>
+  );
+}
+
+function FullHomePage() {
   return (
     <article>
       <section className="px-sp-5 md:px-sp-7 pt-sp-10 md:pt-sp-11 pb-sp-10 md:pb-sp-11">
@@ -88,4 +117,8 @@ export default function Home() {
 
     </article>
   );
+}
+
+export default function Home() {
+  return isHolding ? <HoldingPage /> : <FullHomePage />;
 }
