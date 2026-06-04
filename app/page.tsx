@@ -42,14 +42,11 @@ function HoldingPage() {
         </h1>
 
         <p className="text-[17px] md:text-[20px] leading-[1.5] md:leading-[1.45] text-ink-2 max-w-[600px]">
-          This site is being built. In the meantime, the best way to reach me is{" "}
-          <a
-            href="mailto:chris@chriswhalen.design"
-            className="text-ink underline decoration-rule-2 underline-offset-[3px] hover:decoration-ink transition-colors duration-[120ms]"
-          >
-            email
-          </a>
-          .
+          This site is being built. In the meantime, the best way to reach me
+          is email.
+        </p>
+        <p className="text-[17px] md:text-[20px] leading-[1.5] md:leading-[1.45] text-ink mt-sp-3">
+          chris@chriswhalen.design
         </p>
       </div>
     </article>
