@@ -120,22 +120,55 @@ Decisions made during the session that built `/`, `/leadership`, `/writing`, `/c
 - **Testimonial padding is generous.** `py-sp-10` (128px) mobile, `py-sp-11` (192px) desktop. Chris requested "way more" padding.
 - **NextStep defaults to 880px** via the component. CaseLayout wraps it in a 680px constraint to match prose. This keeps the component flexible without per-page props.
 
-### 3k. Consistency audit — top padding and H1 (TODO, not yet applied)
+### 3k. Consistency audit — top padding and H1 (APPLIED)
 
-Audit found three different top paddings and three different H1 sizes across pages:
+Interior pages standardized to `pt-sp-8` (64px) and H1 at `text-[34px] md:text-[44px]`, tracking -0.02em. Home unchanged (192px, 56px hero). `/work` and `/contact` were the two that needed fixing.
 
-| Page | Top padding (desktop) | H1 size (desktop) |
-|---|---|---|
-| `/` (home) | `sp-11` = 192px | 56px, tracking -0.025em |
-| `/work` | `sp-8` / `80px` = 80px | 52px, tracking -0.025em |
-| `/leadership` | `sp-8` = 64px | 44px, tracking -0.02em |
-| `/writing` | `sp-8` = 64px | 44px, tracking -0.02em |
-| `/contact` | `sp-11` = 192px | 44px, tracking -0.02em |
+**Exception:** `/contact` was subsequently redesigned (see §3m) and now uses `pt-sp-10 md:pt-sp-11` with a 56px headline — intentional for a terminal page with minimal content.
 
-**Decision (agreed, not yet implemented):**
-- Interior pages (`/work`, `/leadership`, `/writing`, `/contact`): standardize to `pt-sp-8` (64px desktop) and H1 at 44px/34px mobile (`text-[34px] md:text-[44px]`, tracking -0.02em)
-- Home keeps `pt-sp-11` (192px) and 56px H1 — it's a hero headline, not a page title
-- Files to fix: `app/work/page.tsx` (padding 80px→64px, H1 52px→44px), `app/contact/page.tsx` (padding 192px→64px)
+### 3m. Contact page elevated (redesigned)
+
+Contact page redesigned for more design presence:
+- H1 scaled to 56px desktop (hero-level) — terminal page with minimal content needs typographic weight
+- Top padding restored to `sp-10 md:sp-11` — not subject to the interior-page standardization
+- Contact items redesigned as full-width clickable `<a>` rows: label left, value right, hairline rules between
+- Email row gets accent `→` arrow with slide-right hover (extends NextStep arrow pattern to primary action)
+- Link text scaled to 20px desktop
+- Bottom padding `pb-sp-11` added to balance the page vertically
+
+### 3n. Accent color unified — iron blue removed
+
+**Iron blue (`--accent-2: #1d3a8a`) has been removed entirely.** One accent color: burnt sienna (`--accent: #b8472a`).
+
+The accent now threads across every page, like Stripe uses purple:
+
+- **Nav:** active page link gets a 2px burnt sienna underline (`decoration-accent decoration-2 underline-offset-[6px]`)
+- **Home:** top-line eyebrow ("CHRIS WHALEN — DESIGN LEADER...") in accent
+- **Work index:** case eyebrows ("ANGEL · 2023–PRESENT") in accent
+- **Case pages:** CaseHero eyebrows in accent
+- **Leadership:** "WHAT I BELIEVE", "AI & DESIGN", practice numbers all in accent
+- **Writing:** topic group headers in accent
+- **Contact:** email `→` arrow in accent
+- **All testimonials:** attribution line (em-dash + name) now uses accent everywhere (was iron blue on Home only, ink-3 elsewhere). The `accentAttribution` prop was removed from Testimonial component — all attributions are accent.
+- **NextStep arrows:** unchanged, already accent
+
+**Removed from codebase:** `--accent-2` CSS custom property, `--color-accent-2` Tailwind theme token, `accentAttribution` prop on Testimonial component.
+
+### 3o. Leadership page content and structure refinements
+
+- **"What I Do"** promoted from eyebrow to H2 (`font-display text-[24px] md:text-[26px]`). The eyebrow treatment conflicted with the "PRACTICE 01" eyebrows directly below it.
+- **Lead paragraph gap** tightened: `mb-sp-7` → `mb-sp-6` (matches H1-to-lead gap)
+- **"Multipliers" spacing** fix: added explicit `{" "}` after `</em>` to prevent JSX whitespace collapse
+- **Content edits:** "I'm still working on this one" added to best-idea-wins principle; "engineers" added to 360 survey list; "the Homestead giveaway" clarified from just "Homestead"
+
+### 3p. Writing page spacing tightened
+
+- H1-to-content: `mb-sp-9 md:mb-sp-10` → `mb-sp-7 md:mb-sp-8` (96/128px → 48/64px)
+- Between topic groups: `space-y-sp-10 md:space-y-sp-11` → `space-y-sp-9 md:space-y-sp-10` (128/192px → 96/128px)
+
+### 3q. /work H1 spacing tightened
+
+- H1-to-featured-case: `mb-sp-9 md:mb-sp-10` → `mb-sp-7` (128px → 48px). The gap was massive; now matches other page rhythms.
 
 ### 3l. Angel Design Assistant SessionStart hook removed
 
