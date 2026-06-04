@@ -57,11 +57,11 @@ export default function WritingPage() {
   return (
     <article className="px-sp-5 md:px-sp-7 pt-sp-8 md:pt-sp-8">
       <div className="mx-auto max-w-[880px]">
-        <h1 className="font-display text-[34px] md:text-[44px] font-medium leading-[1.15] md:leading-[1.1] tracking-[-0.02em] text-ink mb-sp-9 md:mb-sp-10">
+        <h1 className="font-display text-[34px] md:text-[44px] font-medium leading-[1.15] md:leading-[1.1] tracking-[-0.02em] text-ink mb-sp-7 md:mb-sp-8">
           Selected Writing
         </h1>
 
-        <div className="space-y-sp-10 md:space-y-sp-11">
+        <div className="space-y-sp-9 md:space-y-sp-10">
           {groups.map((group) => (
             <section key={group.label}>
               <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-accent mb-sp-6">

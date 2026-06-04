@@ -15,7 +15,7 @@ const principles = [
   },
   {
     name: "The best idea wins. Not the loudest, not mine.",
-    body: "I run critique and decision-making so the room produces better thinking than any one of us would alone. My job is to make space, not to fill it.",
+    body: "I run critique and decision-making so the room produces better thinking than any one of us would alone. My job is to make space, not to fill it. I'm still working on this one.",
   },
   {
     name: "I demystify what feels hard.",
@@ -38,11 +38,11 @@ const practices = [
   },
   {
     name: "360 Survey at Year One",
-    body: "A year into the lead role, I asked our COO to run a survey on me. Designers, peers, leaders above. No one asked me to do it. Structured feedback before anyone required it. That’s where “words have weight” came from.",
+    body: "A year into the lead role, I asked our COO to run a survey on me. Designers, engineers, peers, and leaders above. No one asked me to do it. Structured feedback before anyone required it. That’s where “words have weight” came from.",
   },
   {
     name: "Pre-Flight Checklist for Theatrical Giveaways",
-    body: "Built after Homestead shipped, when scope creep on the second giveaway exposed the cost of running a one-off without a system. Four tiers: things needed before the project can be discussed, things needed before it ships to production, nice-to-haves, and stretch goals built around network effects. It also documents team members and roles for visibility. Handed off to the Theatrical Release Coordinator, who now owns and iterates on it.",
+    body: "Built after the Homestead giveaway shipped, when scope creep on the second giveaway exposed the cost of running a one-off without a system. Four tiers: things needed before the project can be discussed, things needed before it ships to production, nice-to-haves, and stretch goals built around network effects. It also documents team members and roles for visibility. Handed off to the Theatrical Release Coordinator, who now owns and iterates on it.",
   },
 ];
 
@@ -56,7 +56,7 @@ export default function LeadershipPage() {
             How I Lead
           </h1>
 
-          <p className="font-display text-[22px] md:text-[26px] font-normal leading-[1.35] md:leading-[1.3] tracking-[-0.01em] text-ink mb-sp-7">
+          <p className="font-display text-[22px] md:text-[26px] font-normal leading-[1.35] md:leading-[1.3] tracking-[-0.01em] text-ink mb-sp-6">
             Twenty years ago I sat at a Microsoft and Xbox support desk, watching
             ordinary people meet new technology for the first time. I didn&rsquo;t
             know it then, but that&rsquo;s where I learned the muscle that defines
@@ -111,7 +111,7 @@ export default function LeadershipPage() {
             <p>
               Servant leadership isn&rsquo;t a posture for me. It&rsquo;s the
               operating mode. I read Liz Wiseman&rsquo;s{" "}
-              <em className="not-italic text-ink">Multipliers</em> two years ago
+              <em className="not-italic text-ink">Multipliers</em>{" "}two years ago
               and it didn&rsquo;t teach me a philosophy&nbsp;&mdash; it gave me
               language for what was already working. My 1:1s open with what my
               designer is working on and what they&rsquo;re discovering, and close
@@ -187,9 +187,9 @@ export default function LeadershipPage() {
       {/* Named Practices — 2-column grid on desktop */}
       <section className="px-sp-5 md:px-sp-7 mt-sp-10">
         <div className="mx-auto max-w-[880px]">
-          <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-accent mb-sp-7">
+          <h2 className="font-display text-[24px] md:text-[26px] font-medium leading-[1.2] tracking-[-0.01em] text-ink mb-sp-7">
             What I Do
-          </p>
+          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-sp-7 md:gap-x-sp-8 md:gap-y-sp-9">
             {practices.map((practice, i) => (
